@@ -43,9 +43,9 @@ button {
 
 .form {
   max-width: 400px;
+  padding: 48px 0 32px;
 }
 .form__title {
-  margin: 48px 0 32px;
   font-size: 24px;
   font-weight: 400;
   text-align: center;
@@ -59,7 +59,8 @@ button {
 .form .is-password {
   position: absolute;
   right: 12px;
-  top: 32px;
+  transform: translate(0, calc(-50% + 16px));
+  top: 50%;
   cursor: pointer;
 }
 .form__submit {
