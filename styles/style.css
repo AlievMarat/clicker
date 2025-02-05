@@ -30,9 +30,15 @@ button {
 .label {
   font-size: 16px;
   font-weight: 400;
+  display: inline-block;
   line-height: 24px;
-  position: relative;
+  padding-bottom: 24px;
+  width: 100%;
   color: #61646b;
+}
+
+.label-last {
+  padding-bottom: 32px;
 }
 
 .form-container {
@@ -54,13 +60,16 @@ button {
   width: 100%;
   border-radius: 8px;
   height: 48px;
-  margin-bottom: 24px;
+  padding-left: 12px;
+}
+.form .password-container {
+  position: relative;
 }
 .form .is-password {
   position: absolute;
-  right: 12px;
-  transform: translate(0, calc(-50% + 16px));
   top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
   cursor: pointer;
 }
 .form__submit {
