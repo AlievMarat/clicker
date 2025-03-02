@@ -5,6 +5,7 @@ const inputEmail = document.querySelector(".input__email");
 const inputPassword = document.querySelector(".input__password");
 const submit = document.querySelector(".form__submit");
 const emailValue = document.querySelector(".input-email");
+const sidebarbtn = document.querySelector(".sidebar__total--btn");
 const submitObj = {
   email: "",
   password: "",
@@ -21,18 +22,39 @@ function showIcon(oneIcon, twoIcon) {
   eyeShow.style.display = oneIcon;
   notShow.style.display = twoIcon;
 }
-if (typeInput.getAttribute("type") == "password") {
-  showIcon("block", "none");
-}
+typeInput.getAttribute("type") == "password" && showIcon("block", "none");
+
 notShow.addEventListener("click", () => {
-  if (typeInput.getAttribute("type") == "text") {
+  if (typeInput.getAttribute("type") === "text") {
+    typeInput.setAttribute("type", "password");
+    showIcon("block", "none");
+  }
+});
+notShow.removeEventListener("click", () => {
+  if (typeInput.getAttribute("type") === "text") {
     typeInput.setAttribute("type", "password");
     showIcon("block", "none");
   }
 });
 eyeShow.addEventListener("click", () => {
-  if (typeInput.getAttribute("type") == "password") {
+  if (typeInput.getAttribute("type") === "password") {
     typeInput.setAttribute("type", "text");
     showIcon("none", "block");
   }
+});
+eyeShow.removeEventListener("click", () => {
+  if (typeInput.getAttribute("type") === "password") {
+    typeInput.setAttribute("type", "text");
+    showIcon("none", "block");
+  }
+});
+const btnBuy = document.querySelector(".sidebar__total--btn");
+const sidebarCard = document.querySelector(".sidebar__card");
+
+btnBuy.addEventListener("mouseover", () => {
+  sidebarCard.classList.add("hover-sidebar");
+});
+
+btnBuy.addEventListener("mouseout", () => {
+  sidebarCard.classList.remove("hover-sidebar");
 });
