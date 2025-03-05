@@ -171,6 +171,7 @@ button {
     }
   }
   .sidebar {
+    position: relative;
     display: flex;
     gap: 12px;
     flex-direction: column;
@@ -224,6 +225,14 @@ button {
       &-text {
         color: #e0e0e0;
       }
+    }
+    &-btn {
+      border-radius: 100%;
+      padding: 10px;
+      align-self: center;
+      border: none;
+      bottom: 0;
+      position: absolute;
     }
   }
 }
