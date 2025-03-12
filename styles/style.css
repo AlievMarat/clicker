@@ -185,6 +185,8 @@ button {
   position: relative;
   display: flex;
   gap: 12px;
+  max-height: 726px;
+  overflow-y: auto;
   flex-direction: column;
 }
 .main .sidebar__card:has(.sidebar__total--btn:hover) {
