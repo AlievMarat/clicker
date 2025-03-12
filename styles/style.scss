@@ -170,6 +170,9 @@ button {
       }
     }
   }
+  .sidebar::-webkit-scrollbar {
+    width: 2px; /* Ширина полосы */
+  }
   .sidebar {
     position: relative;
     display: flex;

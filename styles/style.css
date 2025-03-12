@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -180,6 +181,9 @@ button {
 }
 .main .score__card-title {
   font-size: 24px;
+}
+.main .sidebar::-webkit-scrollbar {
+  width: 2px; /* Ширина полосы */
 }
 .main .sidebar {
   position: relative;
