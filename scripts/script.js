@@ -3,7 +3,8 @@ const notShow = document.querySelector(".not-show");
 const typeInput = document.querySelector(".input-type");
 const inputEmail = document.querySelector(".input__email");
 const inputPassword = document.querySelector(".input__password");
-const submit = document.querySelector(".form__submit");
+const reg = document.querySelector(".form__signup");
+const auth = document.querySelector(".form__signin");
 const emailValue = document.querySelector(".input-email");
 const sidebarbtn = document.querySelector(".sidebar__total--btn");
 const submitObj = {
@@ -13,10 +14,34 @@ const submitObj = {
 const updateSubmitObj = (key) => (e) => (submitObj[key] = e.target.value);
 
 inputPassword.addEventListener("input", updateSubmitObj("password"));
-inputPassword.addEventListener("input", updateSubmitObj("email"));
-submit.addEventListener("click", (e) => {
+inputEmail.addEventListener("input", updateSubmitObj("email"));
+// reg.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   fetch("http://localhost:3000/sign-up", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(submitObj),
+//   }).then((response) => {
+//     return response.json();
+//   });
+// });
+auth.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log(submitObj);
+  fetch("http://localhost:3000/sign-in", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(submitObj),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      localStorage.setItem("token", data.user);
+    });
 });
 function showIcon(oneIcon, twoIcon) {
   eyeShow.style.display = oneIcon;
