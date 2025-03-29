@@ -34,7 +34,12 @@ app.post("/sign-up", (req, res) => {
     .status(200)
     .json({ message: "user created successfully", user: generateToken(email) });
 });
-app.post("sign-in", (req, res) => {
+app.post("/sign-in", (req, res) => {
+  const { email, password } = req.body;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: "Email is not required!" });
+  }
   if (!email || !password) {
     return res
       .status(400)

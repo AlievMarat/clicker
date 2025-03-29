@@ -15,34 +15,36 @@ const updateSubmitObj = (key) => (e) => (submitObj[key] = e.target.value);
 
 inputPassword.addEventListener("input", updateSubmitObj("password"));
 inputEmail.addEventListener("input", updateSubmitObj("email"));
-// reg.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   fetch("http://localhost:3000/sign-up", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(submitObj),
-//   }).then((response) => {
-//     return response.json();
-//   });
-// });
-auth.addEventListener("click", (e) => {
-  e.preventDefault();
-  fetch("http://localhost:3000/sign-in", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(submitObj),
-  })
-    .then((response) => {
-      return response.json();
+auth
+  ? auth.addEventListener("click", (e) => {
+      e.preventDefault();
+      fetch("http://localhost:3000/sign-in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submitObj),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          localStorage.setItem("token", data.user);
+        });
     })
-    .then((data) => {
-      localStorage.setItem("token", data.user);
+  : reg.addEventListener("click", (e) => {
+      e.preventDefault();
+      fetch("http://localhost:3000/sign-up", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submitObj),
+      }).then((response) => {
+        return response.json();
+      });
     });
-});
+
 function showIcon(oneIcon, twoIcon) {
   eyeShow.style.display = oneIcon;
   notShow.style.display = twoIcon;
