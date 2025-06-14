@@ -18,7 +18,7 @@ inputEmail.addEventListener("input", updateSubmitObj("email"));
 auth
   ? auth.addEventListener("click", (e) => {
       e.preventDefault();
-      fetch("http://localhost:3000/sign-in", {
+      fetch("http://localhost:3000/auth/sign-in", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,15 +34,19 @@ auth
     })
   : reg.addEventListener("click", (e) => {
       e.preventDefault();
-      fetch("http://localhost:3000/sign-up", {
+      fetch("http://localhost:3000/auth/sign-up", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(submitObj),
-      }).then((response) => {
-        return response.json();
-      });
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          localStorage.setItem("token", data.user);
+        });
     });
 
 function showIcon(oneIcon, twoIcon) {
